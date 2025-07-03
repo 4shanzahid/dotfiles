@@ -7,7 +7,7 @@ local function get_root(fname)
 			return clients[#clients].config.root_dir
 		end
 	end
-	return vim.fs.root(fname, "go.work") or vim.fs.root(fname, "go.mod") or vim.fs.root(fname, ".git")
+	return vim.fs.root(fname, { "go.work", "go.mod", ".git" })
 end
 
 return {
@@ -15,23 +15,27 @@ return {
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
 	root_dir = function(bufnr, on_dir)
 		local fname = vim.api.nvim_buf_get_name(bufnr)
-		-- see: https://github.com/neovim/nvim-lspconfig/issues/804
+
 		if mod_cache then
 			on_dir(get_root(fname))
 			return
 		end
-		local cmd = { "go", "env", "GOMODCACHE" }
-		vim.system(cmd, { text = true }, function(output)
-			if output.code == 0 then
-				if output.stdout then
-					mod_cache = vim.trim(output.stdout)
-				end
-				on_dir(get_root(fname))
-			else
-				vim.schedule(function()
-					vim.notify(("[gopls] cmd failed with code %d: %s\n%s"):format(output.code, cmd, output.stderr))
-				end)
+
+		-- Async GOMODCACHE detection
+		vim.system({ "go", "env", "GOMODCACHE" }, { text = true }, function(result)
+			if result.code == 0 and result.stdout then
+				mod_cache = vim.trim(result.stdout)
 			end
+			vim.schedule(function()
+				on_dir(get_root(fname))
+			end)
 		end)
 	end,
+	settings = {
+		gopls = {
+			gofumpt = true,
+			usePlaceholders = true,
+			completeUnimported = true,
+		},
+	},
 }

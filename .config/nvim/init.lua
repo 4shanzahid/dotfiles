@@ -1,17 +1,10 @@
 require("config.lazy")
 require("core")
 
--- Enable virtual text diagnostics (disabled by default in 0.11)
 vim.diagnostic.config({
 	virtual_text = {
-		-- Enable virtual text
 		enabled = true,
-		-- Show source (language server name)
-		source = "if_many",
-		-- Prefix for virtual text
 		prefix = "●",
-		-- Show virtual text only on current line (optional, less cluttered)
-		-- current_line = true,
 	},
 	signs = {
 		text = {
