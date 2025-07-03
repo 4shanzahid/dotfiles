@@ -1,3 +1,2 @@
 require("config.lazy")
-require("config.vim-config")
-
+require("core")
