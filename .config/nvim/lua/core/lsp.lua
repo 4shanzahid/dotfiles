@@ -6,6 +6,7 @@ vim.lsp.enable({
 	"tailwindcss",
 	"eslint",
 	"pyright",
+	"ruff",
 	"yamlls",
 })
 

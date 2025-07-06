@@ -7,55 +7,75 @@ return {
 		},
 		version = "*",
 		config = function()
-			vim.cmd("highlight Pmenu guibg=none")
-			vim.cmd("highlight PmenuExtra guibg=none")
-			vim.cmd("highlight FloatBorder guibg=none")
-			vim.cmd("highlight NormalFloat guibg=none")
 			require("blink.cmp").setup({
 				snippets = { preset = "luasnip" },
 				signature = { enabled = true },
+
 				appearance = {
 					use_nvim_cmp_as_default = false,
-					nerd_font_variant = "normal",
-				},
-				sources = {
-					default = { "lsp", "path", "snippets", "buffer" },
-					providers = {
-						-- Provider-specific configurations go here
+					nerd_font_variant = "mono",
+					kind_icons = {
+						Text = "󰉿",
+						Method = "󰊕",
+						Function = "󰊕",
+						Constructor = "󰒓",
+						Field = "󰜢",
+						Variable = "󰆦",
+						Property = "󰖷",
+						Class = "󱡠",
+						Interface = "󱡠",
+						Struct = "󱡠",
+						Module = "󰅩",
+						Unit = "󰪚",
+						Value = "󰦨",
+						Enum = "󰦨",
+						Keyword = "󰻾",
+						Snippet = "󱄽",
+						Color = "󰏘",
+						File = "󰈔",
+						Reference = "󰬲",
+						Folder = "󰉋",
+						Event = "󱐋",
+						Operator = "󰪚",
+						TypeParameter = "󰬛",
 					},
 				},
+
+				sources = {
+					default = { "lsp", "path", "snippets", "buffer" },
+					providers = {},
+				},
 				keymap = {
-					["<C-f>"] = {},
-					-- Fixed: Add Enter key to accept suggestions
+					preset = "enter",
+					["<C-e>"] = { "hide", "fallback" },
+					["<Tab>"] = { "snippet_forward", "select_next", "fallback" },
+					["<S-Tab>"] = { "snippet_backward", "select_prev", "fallback" },
 					["<CR>"] = { "accept", "fallback" },
 				},
 				cmdline = {
 					enabled = false,
-					completion = { menu = { auto_show = true } },
-					sources = {
-						min_keyword_length = 2,
-					},
-					keymap = {
-						["<CR>"] = { "accept_and_enter", "fallback" },
-					},
 				},
 				completion = {
+					accept = {
+						auto_brackets = {
+							enabled = true,
+						},
+					},
 					menu = {
-						border = nil,
+						border = "rounded",
 						scrolloff = 1,
 						scrollbar = false,
 						draw = {
 							columns = {
 								{ "kind_icon" },
-								{ "label", "label_description", gap = 1 },
+								{ "label", gap = 0 },
 								{ "kind" },
-								{ "source_name" },
 							},
 						},
 					},
 					documentation = {
 						window = {
-							border = nil,
+							border = "rounded",
 							scrollbar = false,
 							winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,EndOfBuffer:BlinkCmpDoc",
 						},

@@ -30,7 +30,7 @@ return {
 					-- Formatters
 					"stylua",
 					"gofumpt",
-					"goimports-reviser",
+					"goimports",
 					"prettier",
 					"yamlfmt",
 					"ruff",
@@ -43,5 +43,11 @@ return {
 				run_on_start = true,
 			})
 		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			-- options
+		},
 	},
 }

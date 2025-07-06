@@ -24,6 +24,6 @@ require("lazy").setup({
     rocks = {
         enabled = false, -- Disable luarocks support completely
     },
-    install = { colorscheme = { "habamax" } },
+    install = { colorscheme = { "dracula" } },
     checker = { enabled = true },
 })

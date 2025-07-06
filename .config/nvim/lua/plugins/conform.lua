@@ -19,7 +19,7 @@ return {
 	opts = {
 		formatters_by_ft = {
 			lua = { "stylua" },
-			go = { "gofumpt", "goimports-reviser" },
+			go = { "goimports", "gofumpt" },
 			javascript = { "prettier" },
 			typescript = { "prettier" },
 			javascriptreact = { "prettier" },
@@ -32,7 +32,12 @@ return {
 			yaml = { "yamlfmt" },
 			yml = { "yamlfmt" },
 			markdown = { "prettier" },
-			python = { "ruff_format", "ruff_organize_imports" },
+			python = { "ruff_format" },
+		},
+
+		format_on_save = {
+			timeout_ms = 500,
+			lsp_format = "fallback",
 		},
 
 		default_format_opts = {

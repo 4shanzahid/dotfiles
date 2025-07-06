@@ -14,8 +14,7 @@ return {
 								vim.cmd("normal vbd")
 							end,
 						},
-						["n"] = {
-						},
+						["n"] = {},
 					},
 				},
 			},

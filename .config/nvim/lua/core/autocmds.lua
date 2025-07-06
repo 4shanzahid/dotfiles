@@ -37,7 +37,7 @@ api.nvim_create_autocmd("BufReadPost", {
 
 -- auto close brackets
 -- this
-api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
+-- api.nvim_create_autocmd("FileType", { pattern = "man", command = [[nnoremap <buffer><silent> q :quit<CR>]] })
 
 -- Enable spell checking for certain file types
 api.nvim_create_autocmd(
@@ -74,7 +74,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("gD", vim.lsp.buf.declaration, "Goto Declaration")
 
 		map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-		map("<leader>ls", vim.lsp.buf.signature_help, "Display Signature Information")
 		map("<leader>lr", vim.lsp.buf.rename, "Rename all references")
 		map("<leader>lf", vim.lsp.buf.format, "Format")
 

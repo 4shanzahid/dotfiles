@@ -30,3 +30,4 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.o.cursorline = true
+vim.o.showmode = false
