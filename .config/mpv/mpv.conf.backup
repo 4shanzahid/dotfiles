@@ -1,0 +1,11 @@
+profile=high-quality
+vo=gpu-next
+video-sync=display-resample
+tscale=oversample
+interpolation=yes
+
+deband=yes
+dither-depth=auto
+sub-auto=fuzzy
+sub-bold=yes
+

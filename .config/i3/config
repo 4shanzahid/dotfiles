@@ -35,6 +35,9 @@ exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 bindsym $mod+x exec powermenu_t1 
+bindsym $mod+b exec /home/ashan/Downloads/rofi-bluetooth/rofi-bluetooth
+bindsym $mod+n exec rofi-wifi-menu
+bindsym --release $mod+Shift+s exec --no-startup-id flameshot gui
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -199,6 +202,4 @@ gaps inner 10
 gaps outer -10
 
 exec --no-startup-id "i3-msg 'workspace 1; exec kitty'"
-exec --no-startup-id "i3-msg 'workspace 2; exec /home/ashan/.local/share/AppImage/ZenBrowser.AppImage'"
 exec --no-startup-id "i3-msg 'workspace 9; exec kitty -e bashtop'"
-exec --no-startup-id "i3-msg 'workspace 10; exec snap run ferdium'"
